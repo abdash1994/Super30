@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-labs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run each lab's tests in isolation
+        run: |
+          set -e
+          shopt -s nullglob
+          for dir in labs/*/; do
+            if [ -f "$dir/requirements.txt" ]; then
+              echo "::group::$dir"
+              python -m venv "/tmp/venv-$(basename "$dir")"
+              . "/tmp/venv-$(basename "$dir")/bin/activate"
+              pip install -q -r "$dir/requirements.txt" pytest httpx
+              (cd "$dir" && pytest -q)
+              deactivate
+              echo "::endgroup::"
+            fi
+          done
+
+  docker-sizes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build full and slim images, report sizes
+        run: |
+          if [ ! -f labs/01-docker-slim/Dockerfile ]; then echo "Lab 01 not present yet, skipping."; exit 0; fi
+          cd labs/01-docker-slim
+          docker build -q -f Dockerfile.full -t lab01:full .
+          docker build -q -f Dockerfile -t lab01:slim .
+          {
+            echo "### Lab 01 image sizes"
+            echo ""
+            echo "| Image | Size |"
+            echo "| --- | --- |"
+            echo "| Full (python:3.11) | $(docker image inspect lab01:full --format '{{.Size}}' | awk '{printf "%.0f MB", $1/1000/1000}') |"
+            echo "| Slim multi-stage | $(docker image inspect lab01:slim --format '{{.Size}}' | awk '{printf "%.0f MB", $1/1000/1000}') |"
+          } >> "$GITHUB_STEP_SUMMARY"
+          docker run -d -p 8000:8000 --name slim lab01:slim
+          sleep 3
+          curl -fsS http://localhost:8000/health
