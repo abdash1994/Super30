@@ -17,6 +17,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | # | Lab | Result |
 | --- | --- | --- |
 | 01 | [Slim Docker images](labs/01-docker-slim) | Full vs multi-stage slim image size, measured in CI |
+| 02 | [Anonymous-access checker](labs/02-anon-access-checker) | Lists which tables a public key can read; exit code 1 blocks a release if any leak |
 
 ## How I work
 
