@@ -50,3 +50,16 @@ jobs:
           docker run -d -p 8000:8000 --name slim lab01:slim
           sleep 3
           curl -fsS http://localhost:8000/health
+
+  test-kavach:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run KAVACH tests
+        run: |
+          if [ ! -f kavach/requirements.txt ]; then echo "KAVACH service not present yet, skipping."; exit 0; fi
+          pip install -q -r kavach/requirements.txt
+          cd kavach && pytest -q
