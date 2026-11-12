@@ -21,6 +21,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 03 | [AI cost calculator](labs/03-ai-cost-calculator) | Tokens x price x volume into cost per request, per day and per month, models side by side |
 | 04 | [Status-code demo API](labs/04-status-codes) | Nine HTTP status codes, one job each, one test per code and a curl script that checks all nine live |
 | 05 | [Environment settings](labs/05-env-settings) | dev/test/prod from environment variables; prod refuses unsafe config, fake data only in test |
+| 07 | [Transcript to action items](labs/07-action-items) | Schema-checked JSON `{task, owner, due}`, "unassigned" allowed, scored on 10 labelled samples (baseline 94% precision, 83% recall) |
 
 ## How I work
 

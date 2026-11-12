@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Meeting action items",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["action_items"],
+  "properties": {
+    "action_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task", "owner", "due"],
+        "properties": {
+          "task": {"type": "string", "minLength": 3},
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "description": "An attendee's name, or exactly \"unassigned\" when nobody took it on."
+          },
+          "due": {
+            "type": ["string", "null"],
+            "description": "The deadline as said in the meeting (e.g. \"Friday\"), or null if none was given."
+          }
+        }
+      }
+    }
+  }
+}
