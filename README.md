@@ -22,6 +22,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 04 | [Status-code demo API](labs/04-status-codes) | Nine HTTP status codes, one job each, one test per code and a curl script that checks all nine live |
 | 05 | [Environment settings](labs/05-env-settings) | dev/test/prod from environment variables; prod refuses unsafe config, fake data only in test |
 | 07 | [Transcript to action items](labs/07-action-items) | Schema-checked JSON `{task, owner, due}`, "unassigned" allowed, scored on 10 labelled samples (baseline 94% precision, 83% recall) |
+| 08 | [Sync vs async HTTP](labs/08-async-http) | Three 300 ms calls: ~900 ms one after another, ~300 ms with `asyncio.gather`; one failing service does not sink the others |
 
 ## How I work
 
