@@ -23,6 +23,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 05 | [Environment settings](labs/05-env-settings) | dev/test/prod from environment variables; prod refuses unsafe config, fake data only in test |
 | 07 | [Transcript to action items](labs/07-action-items) | Schema-checked JSON `{task, owner, due}`, "unassigned" allowed, scored on 10 labelled samples (baseline 94% precision, 83% recall) |
 | 08 | [Sync vs async HTTP](labs/08-async-http) | Three 300 ms calls: ~900 ms one after another, ~300 ms with `asyncio.gather`; one failing service does not sink the others |
+| 09 | [Embedding similarity](labs/09-embedding-similarity) | Same-model search: 8/8 right; two models with the same vector size: 0/8 right and no error; a model-name check refuses the mix |
 
 ## How I work
 
