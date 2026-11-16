@@ -6,7 +6,7 @@ are worth retrying, and a structured error the agent can read when the call
 still fails. The tool never raises, because an exception inside a tool call
 usually ends the whole agent run instead of letting the agent recover.
 
-The tool talks to POST /v1/score (request contract: kavach/app/schemas.py).
+The tool talks to POST /v1/score (request contract: kavach/app/schemas/requests.py).
 """
 
 from __future__ import annotations
