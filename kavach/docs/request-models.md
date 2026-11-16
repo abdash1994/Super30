@@ -8,7 +8,7 @@ KAVACH scores a payment for fraud before it is approved. If a client sends an am
 
 ## What this adds
 
-`app/schemas.py` defines the request contract with Pydantic `Field` constraints:
+`app/schemas/requests.py` defines the request contract with Pydantic `Field` constraints:
 
 | Model | Used for | Key rules |
 | --- | --- | --- |

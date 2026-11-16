@@ -4,15 +4,30 @@ My Super30 course project, built the way a client engagement runs: a requirement
 
 The KAVACH video series on my YouTube channel, Problem to Prod, walks through each stage.
 
-**Result: a running API skeleton with a `/health` check and a versioned `/v1` router, tested in CI.**
+**Result: the API is split into routers, services and schemas; all 46 existing tests pass unchanged, plus 4 new tests that guard the layering.**
 
-## What's here
+## Layout
 
-| Path | What it does |
-| --- | --- |
-| `app/main.py` | Creates the FastAPI app, mounts the v1 router at `/v1`, serves `/health` |
-| `app/routers/v1.py` | Version 1 of the public API. Today: `GET /v1/status` |
-| `tests/test_api.py` | Checks health, the v1 status response, and that unversioned or unknown-version routes return 404 |
+```
+app/
+  main.py            create_app(): wires the routers together, nothing else
+  routers/           thin HTTP layer: parse the request, call a service, return it
+    health.py        GET /health (unversioned, for infrastructure)
+    v1.py            GET /v1/status (versioned, for clients)
+  services/          business logic; never imports FastAPI
+    status.py        builds the health and status answers
+  schemas/           data shapes in and out
+    requests.py      ScoreRequest, ExplainRequest (strict input rules)
+    responses.py     HealthResponse, StatusResponse (the response contract)
+tests/
+  test_api.py        endpoints, versioning rules (unchanged by the refactor)
+  test_schemas.py    one rejection test per request rule (unchanged)
+  test_layout.py     fails if a service imports FastAPI or a schema imports a service
+```
+
+Request rules and why each exists: [`docs/request-models.md`](docs/request-models.md).
+
+Rule of thumb: a new endpoint is one function in `routers/`, its logic in `services/`, and its input and output models in `schemas/`.
 
 ## Run it
 
@@ -44,6 +59,14 @@ uvicorn app.main:app --reload      # then open http://127.0.0.1:8000/docs
 
 A client integrating with KAVACH needs to know their integration won't break on a Tuesday because we renamed a field. URL versioning makes the contract visible in every request, so we can ship fast inside `/v1` and still make breaking changes later without a coordinated outage.
 
-## Trade-off
+## Why the layers matter to a business
+
+When the fraud model, a database or a second client channel (a batch job, a CLI) arrives, the logic in `services/` can be reused and tested without a web server, and the HTTP layer can change without touching the rules. Changes stay small and reviews stay fast, which is what keeps a client engagement shipping weekly.
+
+## Trade-off: layers
+
+More files for a service this small: a status endpoint now touches three folders. I accepted that now, while there are two endpoints and the move is cheap, rather than later when `/v1/score` and `/v1/explain` would have to be untangled from route functions.
+
+## Trade-off: versioning
 
 I chose URL-path versioning (`/v1/...`) over header versioning (`Accept: application/vnd.kavach.v1+json`). Path versioning is easier to see in logs, curl and browser docs, and easier for a client to get right. The cost is that a new version duplicates routes, and URLs change between versions. For a young API with few clients, visibility wins.
