@@ -25,6 +25,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 08 | [Sync vs async HTTP](labs/08-async-http) | Three 300 ms calls: ~900 ms one after another, ~300 ms with `asyncio.gather`; one failing service does not sink the others |
 | 09 | [Embedding similarity](labs/09-embedding-similarity) | Same-model search: 8/8 right; two models with the same vector size: 0/8 right and no error; a model-name check refuses the mix |
 | 10 | [Ticket triage eval + agent cap](labs/10-triage-eval) | Keyword baseline: 35/50 tickets (70%) in the right queue, 12 to a human, 3 misrouted; a looping agent is stopped at 5 turns and escalated |
+| 11 | [Rolling z-score anomaly detector](labs/11-rolling-zscore) | 14-day window, threshold 3: 3/3 incidents caught, 0 false alarms in 90 days; an earlier incident in the window halves the next one's z-score |
 
 ## How I work
 
