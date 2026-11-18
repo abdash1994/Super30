@@ -26,6 +26,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 09 | [Embedding similarity](labs/09-embedding-similarity) | Same-model search: 8/8 right; two models with the same vector size: 0/8 right and no error; a model-name check refuses the mix |
 | 10 | [Ticket triage eval + agent cap](labs/10-triage-eval) | Keyword baseline: 35/50 tickets (70%) in the right queue, 12 to a human, 3 misrouted; a looping agent is stopped at 5 turns and escalated |
 | 11 | [Rolling z-score anomaly detector](labs/11-rolling-zscore) | 14-day window, threshold 3: 3/3 incidents caught, 0 false alarms in 90 days; an earlier incident in the window halves the next one's z-score |
+| 12 | [Query plan before and after an index](labs/12-explain-index) | One customer's 7 orders out of 50,000: full scan to index search, ~2,500x less work; wrapping the column in a function brings the full scan back; two indexes make inserts 1.6x costlier |
 
 ## How I work
 
