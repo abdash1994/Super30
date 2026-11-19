@@ -1,0 +1,89 @@
+[
+  {
+    "id": "01-sprint-planning",
+    "attendees": ["Priya", "Ravi", "Meena"],
+    "transcript": "Priya: Thanks for joining. The login bug is the top priority.\nRavi: I'll fix the login timeout by Friday.\nPriya: Meena, can you update the release notes?\nMeena: Sure.",
+    "expected": [
+      {"keywords": ["login", "timeout"], "owner": "Ravi", "due": "Friday"},
+      {"keywords": ["release notes"], "owner": "Meena", "due": null}
+    ]
+  },
+  {
+    "id": "02-client-call",
+    "attendees": ["Aditya", "Sara"],
+    "transcript": "Sara: The client wants the export in CSV as well as PDF.\nAditya: I'll send them a revised quote by Monday.\nSara: Someone needs to check whether the CSV export breaks the audit log.",
+    "expected": [
+      {"keywords": ["quote"], "owner": "Aditya", "due": "Monday"},
+      {"keywords": ["audit log"], "owner": "unassigned", "due": null}
+    ]
+  },
+  {
+    "id": "03-no-actions",
+    "attendees": ["Kabir", "Lena"],
+    "transcript": "Kabir: The demo went well yesterday.\nLena: Agreed, the client liked the dashboard. Nothing else from me.",
+    "expected": []
+  },
+  {
+    "id": "04-incident-review",
+    "attendees": ["Nisha", "Omar", "Ravi"],
+    "transcript": "Nisha: The outage lasted 40 minutes.\nOmar: I will write the postmortem by tomorrow.\nNisha: We need to add an alert on queue depth.\nRavi: Omar will also rotate the leaked token.",
+    "expected": [
+      {"keywords": ["postmortem"], "owner": "Omar", "due": "tomorrow"},
+      {"keywords": ["alert", "queue"], "owner": "unassigned", "due": null},
+      {"keywords": ["rotate", "token"], "owner": "Omar", "due": null}
+    ]
+  },
+  {
+    "id": "05-implicit-owner",
+    "attendees": ["Priya", "Dev"],
+    "transcript": "Dev: The pitch deck needs a pricing slide.\nPriya: Let's have Dev own the pricing slide for Thursday.\nDev: Fine. I'll think about the colour scheme too.",
+    "expected": [
+      {"keywords": ["pricing slide"], "owner": "Dev", "due": "Thursday"}
+    ]
+  },
+  {
+    "id": "06-outsider-named",
+    "attendees": ["Meena", "Kabir"],
+    "transcript": "Meena: Legal has to sign off on the data processing agreement.\nKabir: Can someone chase legal for the signed agreement before Wednesday?\nMeena: I'll book the security review.",
+    "expected": [
+      {"keywords": ["legal", "agreement"], "owner": "unassigned", "due": "Wednesday"},
+      {"keywords": ["security review"], "owner": "Meena", "due": null}
+    ]
+  },
+  {
+    "id": "07-already-done",
+    "attendees": ["Ravi", "Sara"],
+    "transcript": "Ravi: I already deployed the hotfix this morning.\nSara: Great. Ravi, could you share the rollback steps with support?\nSara: I'll update the status page by end of day.",
+    "expected": [
+      {"keywords": ["rollback"], "owner": "Ravi", "due": null},
+      {"keywords": ["status page"], "owner": "Sara", "due": "end of day"}
+    ]
+  },
+  {
+    "id": "08-vague-commitment",
+    "attendees": ["Lena", "Omar"],
+    "transcript": "Lena: The onboarding emails are confusing.\nOmar: Yeah, maybe we could look at that at some point.\nLena: Omar will draft three new subject lines by next week.",
+    "expected": [
+      {"keywords": ["subject lines"], "owner": "Omar", "due": "next week"}
+    ]
+  },
+  {
+    "id": "09-two-tasks-one-line",
+    "attendees": ["Aditya", "Nisha"],
+    "transcript": "Nisha: I'll clean up the test data and I'll rerun the evaluation by Friday.\nAditya: Can anyone review the schema change?",
+    "expected": [
+      {"keywords": ["test data"], "owner": "Nisha", "due": null},
+      {"keywords": ["rerun", "evaluation"], "owner": "Nisha", "due": "Friday"},
+      {"keywords": ["schema"], "owner": "unassigned", "due": null}
+    ]
+  },
+  {
+    "id": "10-handoff",
+    "attendees": ["Dev", "Meena", "Sara"],
+    "transcript": "Meena: I'm on leave next week, so the vendor call needs cover.\nSara: I can take the vendor call.\nDev: I'll send Sara the vendor contract today.",
+    "expected": [
+      {"keywords": ["vendor call"], "owner": "Sara", "due": null},
+      {"keywords": ["contract"], "owner": "Dev", "due": "today"}
+    ]
+  }
+]
