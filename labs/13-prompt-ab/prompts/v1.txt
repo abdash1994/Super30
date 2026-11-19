@@ -1,0 +1,3 @@
+Which team should handle this support ticket?
+
+Ticket: {ticket}

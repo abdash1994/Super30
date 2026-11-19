@@ -1,0 +1,26 @@
+{
+  "note": "Hand-written answers that mimic typical model behaviour for this prompt, so the lab runs with no API key. Replace with real ones via run_prompt().",
+  "prompt_sha256": "22d1b55995f57f5c174c36a98e9140cd543f503a6eadb2207a2453e220e0caaf",
+  "outputs": {
+    "t01": "billing.",
+    "t02": "billing",
+    "t03": "billing",
+    "t04": "bug",
+    "t05": "account_access",
+    "t06": "account_access",
+    "t07": "account_access",
+    "t08": "bug",
+    "t09": "bug",
+    "t10": "bug",
+    "t11": "bug",
+    "t12": "feature_request",
+    "t13": "feature_request",
+    "t14": "feature_request",
+    "t15": "feature_request",
+    "t16": "feature_request",
+    "t17": "cancellation",
+    "t18": "cancellation",
+    "t19": "cancellation",
+    "t20": "cancellation"
+  }
+}
