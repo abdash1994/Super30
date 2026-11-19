@@ -1,0 +1,14 @@
+You route customer support tickets to exactly one queue.
+
+Queues:
+- billing: charges, refunds, invoices, prices, failed payments
+- account_access: signing in, passwords, locked accounts, two-factor, SSO
+- bug: something in the product is broken, shows an error, or gives wrong results
+- feature_request: asking for something the product does not do yet
+- cancellation: wants to stop, close or not renew their plan
+
+If the customer wants to leave, choose cancellation even if money is mentioned.
+
+Reply with the queue name only, in lowercase, with no other words.
+
+Ticket: {ticket}

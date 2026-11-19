@@ -1,0 +1,22 @@
+[
+  {"id": "t01", "text": "You billed us twice in October. Please refund one of the charges.", "label": "billing"},
+  {"id": "t02", "text": "Our invoice is missing the purchase order number finance needs.", "label": "billing"},
+  {"id": "t03", "text": "Why did the price go up at renewal without any notice?", "label": "billing"},
+  {"id": "t04", "text": "The card payment keeps failing at checkout even though the card is fine.", "label": "billing"},
+  {"id": "t05", "text": "I reset my password three times and still cannot sign in.", "label": "account_access"},
+  {"id": "t06", "text": "My account is locked after too many attempts. How do I unlock it?", "label": "account_access"},
+  {"id": "t07", "text": "The two-factor code never arrives on my new phone.", "label": "account_access"},
+  {"id": "t08", "text": "New hires get 'access denied' when they log in through our SSO.", "label": "account_access"},
+  {"id": "t09", "text": "The export button shows an error and the CSV is never created.", "label": "bug"},
+  {"id": "t10", "text": "The dashboard has been a blank white page since this morning.", "label": "bug"},
+  {"id": "t11", "text": "The mobile app crashes as soon as I open the reports tab.", "label": "bug"},
+  {"id": "t12", "text": "Dates in the weekly report show up a day early for our Sydney team.", "label": "bug"},
+  {"id": "t13", "text": "It would be great to schedule reports to go out every Monday.", "label": "feature_request"},
+  {"id": "t14", "text": "Any plans to add a dark mode?", "label": "feature_request"},
+  {"id": "t15", "text": "Please let us tag tickets with custom colours.", "label": "feature_request"},
+  {"id": "t16", "text": "We need a Slack integration so alerts reach the team channel.", "label": "feature_request"},
+  {"id": "t17", "text": "We want to cancel our plan at the end of this month.", "label": "cancellation"},
+  {"id": "t18", "text": "Please close my account and delete our workspace.", "label": "cancellation"},
+  {"id": "t19", "text": "We are moving to another tool. How do we stop the subscription?", "label": "cancellation"},
+  {"id": "t20", "text": "Do not renew us next year. We are done after this contract.", "label": "cancellation"}
+]
