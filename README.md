@@ -28,6 +28,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 11 | [Rolling z-score anomaly detector](labs/11-rolling-zscore) | 14-day window, threshold 3: 3/3 incidents caught, 0 false alarms in 90 days; an earlier incident in the window halves the next one's z-score |
 | 12 | [Query plan before and after an index](labs/12-explain-index) | One customer's 7 orders out of 50,000: full scan to index search, ~2,500x less work; wrapping the column in a function brings the full scan back; two indexes make inserts 1.6x costlier |
 | 13 | [Prompt v1 vs v2](labs/13-prompt-ab) | Same 20 tickets: v1 8/20 (11 unparseable), v2 17/20; item-by-item diff shows 10 fixed, 1 broken; edited prompts cannot keep an old score |
+| 14 | [Plain English to SQL, guarded](labs/14-text-to-sql) | 12 questions: 6/7 safe ones right, 5/5 dangerous answers (DELETE, DROP, stacked statement, salary table, runaway join) stopped; all 5 still stopped with the validator off |
 
 ## How I work
 
