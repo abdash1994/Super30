@@ -30,6 +30,7 @@ This repo is my working log for the Super30 programme. Every change arrives as a
 | 13 | [Prompt v1 vs v2](labs/13-prompt-ab) | Same 20 tickets: v1 8/20 (11 unparseable), v2 17/20; item-by-item diff shows 10 fixed, 1 broken; edited prompts cannot keep an old score |
 | 14 | [Plain English to SQL, guarded](labs/14-text-to-sql) | 12 questions: 6/7 safe ones right, 5/5 dangerous answers (DELETE, DROP, stacked statement, salary table, runaway join) stopped; all 5 still stopped with the validator off |
 | 15 | [File agent with an allowlist and confirmation](labs/15-file-agent-guardrails) | 8 tasks: 6/6 harmful requests stopped (deletes, a prompt-injected delete, path escapes, an emptying write, a shell command), 2/2 useful tasks done, 0 files deleted |
+| 16 | [Cache-aside with a hit ratio](labs/16-cache-aside) | 5,000 skewed reads: 81.2% hit ratio, database reads 5,000 to 939; 20 slots or a 5 s TTL drops it to ~47%; without delete-on-write the old price is served until the TTL ends |
 
 ## How I work
 

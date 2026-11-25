@@ -2,6 +2,28 @@
 
 One release every Sunday. Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] - 2026-11-22
+
+Week 3 (Days 14 to 20).
+
+### Added
+
+- Lab 11: rolling z-score anomaly detector with a chart; 3/3 incidents caught, 0 false alarms in 90 days (#28).
+- Lab 12: query plan before and after an index on 50,000 seeded orders, about 2,500x less work, plus a reader for Postgres `EXPLAIN ANALYZE` output (#30).
+- Lab 13: prompt v1 vs v2 on the same 20 tickets (8/20 to 17/20), with an item-by-item diff (#32).
+- Lab 14: plain English to SQL with a read-only user and query validation; 5/5 dangerous queries stopped (#34).
+- Lab 16: cache-aside with a hit-ratio counter; 81.2% hit ratio on a skewed workload, and a test proving delete-on-write prevents stale prices.
+
+### Changed
+
+- KAVACH split into routers, services and schemas, with tests unchanged and green (#26).
+
+### Pending
+
+- Lab 15 (file agent with an allowlisted tool and a confirmation step, Day 19) is open for review in #36.
+- KAVACH Pydantic request models (Day 7) are still open for review in #14.
+- Lab 06 (WebSocket vs SSE, Day 9) is still not built; carried over.
+
 ## [0.2.0] - 2026-11-15
 
 Week 2 (Days 7 to 13).
