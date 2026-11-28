@@ -4,6 +4,15 @@ Import from here (`from app.schemas import ScoreRequest`), not from the
 submodules, so files can move inside this package without breaking callers.
 """
 
+from app.schemas.decisions import (
+    Decision,
+    Evidence,
+    ExplanationResponse,
+    Outcome,
+    Reason,
+    Signal,
+    SignalCode,
+)
 from app.schemas.requests import (
     ExplainRequest,
     Location,
@@ -15,6 +24,13 @@ from app.schemas.requests import (
 from app.schemas.responses import HealthResponse, StatusResponse
 
 __all__ = [
+    "Decision",
+    "Evidence",
+    "ExplanationResponse",
+    "Outcome",
+    "Reason",
+    "Signal",
+    "SignalCode",
     "ExplainRequest",
     "HealthResponse",
     "Location",
