@@ -4,7 +4,7 @@ My Super30 course project, built the way a client engagement runs: a requirement
 
 The KAVACH video series on my YouTube channel, Problem to Prod, walks through each stage.
 
-**Result: the API is split into routers, services and schemas; all 46 existing tests pass unchanged, plus 4 new tests that guard the layering.**
+**Result: `POST /v1/explain` turns a fraud decision into plain English with its evidence; 66 tests pass in CI, including one that proves every number in the explanation comes from the decision.**
 
 ## Layout
 
@@ -13,19 +13,24 @@ app/
   main.py            create_app(): wires the routers together, nothing else
   routers/           thin HTTP layer: parse the request, call a service, return it
     health.py        GET /health (unversioned, for infrastructure)
-    v1.py            GET /v1/status (versioned, for clients)
+    v1.py            GET /v1/status, POST /v1/explain (versioned, for clients)
   services/          business logic; never imports FastAPI
     status.py        builds the health and status answers
+    decisions.py     in-memory decision store (seeded with one demo decision)
+    explainer.py     decision -> plain-English summary and reasons
   schemas/           data shapes in and out
     requests.py      ScoreRequest, ExplainRequest (strict input rules)
     responses.py     HealthResponse, StatusResponse (the response contract)
+    decisions.py     Decision, Signal, ExplanationResponse
 tests/
   test_api.py        endpoints, versioning rules (unchanged by the refactor)
   test_schemas.py    one rejection test per request rule (unchanged)
   test_layout.py     fails if a service imports FastAPI or a schema imports a service
+  test_explain.py    explainer templates, evidence numbers, /v1/explain errors
 ```
 
 Request rules and why each exists: [`docs/request-models.md`](docs/request-models.md).
+How decisions are explained, and why templates instead of an LLM: [`docs/explainer.md`](docs/explainer.md).
 
 Rule of thumb: a new endpoint is one function in `routers/`, its logic in `services/`, and its input and output models in `schemas/`.
 
@@ -45,6 +50,7 @@ uvicorn app.main:app --reload      # then open http://127.0.0.1:8000/docs
 | --- | --- | --- | --- |
 | GET | `/health` | No | Liveness: "is the process up?" For load balancers and uptime monitors |
 | GET | `/v1/status` | Yes | Which service, API version and build a client is talking to |
+| POST | `/v1/explain` | Yes | A past decision in plain English, biggest reasons first, each with observed value and threshold. 404 if unknown |
 
 ## Versioning policy
 
